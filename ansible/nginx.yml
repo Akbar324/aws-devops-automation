@@ -1,0 +1,21 @@
+---
+- name: Install and configure Nginx
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create a custom index.html file
+      copy:
+        dest: /var/www/html/index.html
+        content: "<h1>Welcome to Nginx on {{ inventory_hostname }}</h1>"

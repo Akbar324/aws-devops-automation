@@ -1,0 +1,16 @@
+---
+- name: Run Nginx Docker container
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Start Nginx container
+      community.docker.docker_container:
+        name: mynginx
+        image: nginx
+        state: started
+        restart_policy: unless-stopped
+        ports:
+          - "8080:80"
+        volumes:
+          - "/home/ubuntu/website:/usr/share/nginx/html:ro"

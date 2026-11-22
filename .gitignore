@@ -1,0 +1,30 @@
+# Terraform provider downloads
+**/.terraform/
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Terraform variable values
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+
+# SSH private keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Environment files
+.env
+.env.*
+
+# Generated Ansible inventory
+ansible/inventory.ini
+
+# Local SSH keys
+aws-devops-lab
+aws-devops-lab.pub

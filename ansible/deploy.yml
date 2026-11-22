@@ -1,0 +1,6 @@
+---
+- import_playbook: docker.yml
+
+- import_playbook: website.yml
+
+- import_playbook: container.yml

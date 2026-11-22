@@ -1,0 +1,13 @@
+---
+- name: Deploy Website
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Create Website Directory
+      file:
+        path: /home/ubuntu/website
+        state: directory
+    - name: Copy website file
+      copy:
+        src: ../app/index.html
+        dest: /home/ubuntu/website/index.html
