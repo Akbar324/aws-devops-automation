@@ -32,3 +32,7 @@ jobs:
 
       - name: Check Docker Collection
         run: ansible-galaxy collection list community.docker
+
+      - name: Validate Ansible Playbooks
+        working-directory: ./ansible
+        run: ansible-playbook -i localhost, deploy.yml --syntax-check
