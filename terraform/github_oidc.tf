@@ -22,7 +22,7 @@ resource "aws_iam_role" "github_deploy" {
       Condition = {
         StringEquals = {
           "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
-          "token.actions.githubusercontent.com:sub" = "repo:Akbar324/aws-devops-automation:ref:refs/heads/main"
+          "token.actions.githubusercontent.com:sub" = "repo:Akbar324@103287329/aws-devops-automation@1467908255:ref:refs/heads/main"
         }
       }
     }]
