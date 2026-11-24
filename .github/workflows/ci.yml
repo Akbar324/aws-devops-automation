@@ -1,0 +1,17 @@
+name: Devops CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test Workflow
+        run: echo "My first DevOps CI pipline is running"
