@@ -6,6 +6,8 @@ resource "aws_instance" "web_server" {
   associate_public_ip_address = true
   subnet_id                   = "subnet-09af51bc6ed98a4f8"
 
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+
   tags = {
     Name = "devops-web-server"
   }

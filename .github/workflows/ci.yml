@@ -1,11 +1,17 @@
-name: Devops CI
+name: DevOps CI/CD
+
 on:
   push:
     branches:
       - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -17,14 +23,14 @@ jobs:
         run: terraform version
 
       - name: Initialize Terraform
-        run: terraform init -backend=false
         working-directory: ./terraform
+        run: terraform init -backend=false
 
       - name: Validate Terraform
-        run: terraform validate
         working-directory: ./terraform
+        run: terraform validate
 
-      - name: Ansible Setup
+      - name: Install Ansible
         run: pip install ansible
 
       - name: Check Ansible Version
@@ -36,3 +42,30 @@ jobs:
       - name: Validate Ansible Playbooks
         working-directory: ./ansible
         run: ansible-playbook -i localhost, deploy.yml --syntax-check
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    env:
+      INSTANCE_ID: ${{ vars.EC2_INSTANCE_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Verify AWS Identity
+        run: aws sts get-caller-identity
+
+      - name: Deploy Website
+        run: bash scripts/deploy-website.sh

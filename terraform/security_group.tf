@@ -19,7 +19,7 @@ resource "aws_vpc_security_group_ingress_rule" "custom_https_ingress" {
   from_port         = 8080
   to_port           = 8080
   ip_protocol       = "tcp"
-  cidr_ipv4         = "94.203.95.239/32"
+  cidr_ipv4         = var.allowed_ssh_cidr
 }
 
 resource "aws_vpc_security_group_ingress_rule" "ssh_ingress" {
