@@ -23,3 +23,9 @@ jobs:
       - name: Validate Terraform
         run: terraform validate
         working-directory: ./terraform
+
+      - name: Ansible Setup
+        run: pip install ansible
+
+      - name: Check Ansible Version
+        run: ansible --version
