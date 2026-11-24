@@ -1,14 +1,11 @@
 name: Devops CI
-
 on:
   push:
     branches:
       - main
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,5 +13,13 @@ jobs:
       - name: Terraform Setup
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Version
+      - name: Check Terraform Version
         run: terraform version
+
+      - name: Initialize Terraform
+        run: terraform init -backend=false
+        working-directory: ./terraform
+
+      - name: Validate Terraform
+        run: terraform validate
+        working-directory: ./terraform
