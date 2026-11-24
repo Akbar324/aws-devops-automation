@@ -1,17 +1,159 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWS DevOps Automation</title>
+
+    <style>
+        body {
+            background-color: #080808;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #38bdf8;
+        }
+
+        p {
+            color: #a1a1aa;
+            line-height: 1.7;
+        }
+
+        .header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            color: #38bdf8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background-color: #141414;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .pipeline {
+            background-color: #141414;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .step {
+            padding: 14px 0;
+            border-bottom: 1px solid #333;
+            color: #4ade80;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+        }
+
+        a {
+            color: #38bdf8;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to My AWS DevOps Project</h1>
 
-    <p>Infrastructure provisioned using Terraform.</p>
-    <p>Server configured using Ansible.</p>
-    <p>Application running inside Docker.</p>
-    <p>Automatically deployed using GitHub Actions.</p>
-    <p>Secured using AWS OIDC and Systems Manager.</p>
+    <div class="header">
+        AWS DEVOPS AUTOMATION | PORTFOLIO PROJECT
+    </div>
 
-    <h2>CI/CD Deployment Version 2.0</h2>
+    <h1>Infrastructure as Code.<br>Automated Delivery.</h1>
+
+    <p>
+        An end-to-end AWS DevOps project demonstrating infrastructure
+        provisioning, configuration management, containerization
+        and secure continuous deployment.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>Terraform</h2>
+            <p>Infrastructure as Code</p>
+            <p>AWS EC2, IAM and Security Groups</p>
+        </div>
+
+        <div class="card">
+            <h2>Ansible</h2>
+            <p>Configuration Management</p>
+            <p>Automated server configuration</p>
+        </div>
+
+        <div class="card">
+            <h2>Docker</h2>
+            <p>Containerization</p>
+            <p>Nginx web server</p>
+        </div>
+
+        <div class="card">
+            <h2>GitHub Actions</h2>
+            <p>CI/CD Automation</p>
+            <p>Validation and deployment</p>
+        </div>
+
+        <div class="card">
+            <h2>AWS OIDC</h2>
+            <p>Secure Authentication</p>
+            <p>Temporary AWS credentials</p>
+        </div>
+
+        <div class="card">
+            <h2>AWS SSM</h2>
+            <p>Remote Deployment</p>
+            <p>No inbound SSH required for CI/CD</p>
+        </div>
+
+    </div>
+
+    <div class="pipeline">
+        <h2>Deployment Pipeline</h2>
+
+        <div class="step">01 — GitHub Code Push</div>
+        <div class="step">02 — Terraform Validation</div>
+        <div class="step">03 — Ansible Syntax Validation</div>
+        <div class="step">04 — AWS OIDC Authentication</div>
+        <div class="step">05 — SSM Remote Deployment</div>
+        <div class="step">06 — Website Verification</div>
+
+        <p>Automated deployment architecture</p>
+    </div>
+
+    <footer>
+        <p>Developed by Akbar Hussain | AWS Certified Solutions Architect</p>
+
+        <p>
+            <a href="https://github.com/Akbar324/aws-devops-automation">
+                View GitHub Repository
+            </a>
+        </p>
+
+        <p>Release Version 3.0 | AWS us-east-1</p>
+    </footer>
+
 </body>
 </html>
