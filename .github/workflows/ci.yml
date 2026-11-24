@@ -29,3 +29,6 @@ jobs:
 
       - name: Check Ansible Version
         run: ansible --version
+
+      - name: Check Docker Collection
+        run: ansible-galaxy collection list community.docker
