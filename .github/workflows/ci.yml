@@ -58,6 +58,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Debug OIDC Identity
+        run: |
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Branch reference: $GITHUB_REF"
+
+          curl -fsS \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
+            | python3 -c "import sys,json,base64; p=json.load(sys.stdin)['value'].split('.')[1]; d=json.loads(base64.urlsafe_b64decode(p+'='*(-len(p)%4))); print(json.dumps({k:d.get(k) for k in ['iss','aud','sub']},indent=2))"
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
