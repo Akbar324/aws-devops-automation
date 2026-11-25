@@ -217,26 +217,22 @@ The deployment job runs only after the CI job succeeds.
 Website updates do not require rebuilding or restarting
 the Nginx container.
 
-## Successful CI/CD Execution
 
-![Successful Pipeline](docs/screenshots/ci-cd-success.png)
+## CI/CD Execution, Failure Detection and Recovery
 
-## Failure Detection and Recovery
+The CI/CD pipeline was successfully tested through multiple
+deployment scenarios:
 
-The CI quality gate was tested by intentionally introducing
-an undeclared Terraform input variable.
+- Successful GitHub OIDC authentication and AWS deployment.
+- Automated website updates through AWS Systems Manager.
+- Intentional Terraform validation failure.
+- Deployment blocking when CI validation fails.
+- Successful pipeline recovery after restoring valid configuration.
 
-Terraform validation failed and the deployment job was
-automatically skipped.
+The following screenshot demonstrates successful deployments,
+failure detection and recovery.
 
-The existing application remained unaffected.
-
-![CI Failure](docs/screenshots/ci-failure.png)
-
-After restoring the valid Terraform configuration,
-the pipeline completed successfully.
-
-![Pipeline Recovery](docs/screenshots/ci-recovery.png)
+![CI/CD Workflow Results](docs/screenshots/github-workflow.png)
 
 ## Security Implementation
 
